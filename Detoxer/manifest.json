@@ -2,7 +2,7 @@
   "name": "Detoxicater",
   "manifest_version": 3,
   "version": "0.1",
-  "description": "Turns the page red when you click the icon",
+  "description": "Filters toxic and harmful content on web pages using AI analysis",
   "permissions": ["activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
@@ -10,9 +10,9 @@
   "action": {
       "default_icon": {
           "16": "icons/icon16.png",
-	        "32": "icons/icon32.png",
-  	      "48": "icons/icon48.png",
-  	      "128": "icons/icon128.png"
+          "32": "icons/icon32.png",
+          "48": "icons/icon48.png",
+          "128": "icons/icon128.png"
        }
    }
 }

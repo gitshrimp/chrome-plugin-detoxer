@@ -1,31 +1,98 @@
-# Love and Peace
+# Detoxer - Content Toxicity Filter
 
-<p align="left">
-<img width="80" alt="fastaudio-2" src="https://user-images.githubusercontent.com/31392274/236587723-dd4d4654-874a-4d10-8c71-543fc8b4eba9.jpg">
+<p align="center">
+<img width="80" alt="detoxer-icon" src="Detoxer/icons/icon.svg">
 </p>
 
+A Chrome extension that uses Google's Perspective API to detect and filter toxic content on web pages, helping create a safer browsing experience.
+
+## Features
+
+- 🛡️ **AI-Powered Detection**: Uses Google's Perspective API to analyze text for toxicity, insults, and identity attacks
+- 🎯 **Smart Filtering**: Only filters content that exceeds configurable toxicity thresholds
+- 👁️ **Visual Feedback**: Shows processing status and results with clear notifications
+- ⚡ **Non-Destructive**: Replaces toxic content with helpful placeholders instead of removing it entirely
+- 🔧 **Configurable**: Easy to adjust filtering sensitivity
+
+## Installation
+
+### 1. Get a Perspective API Key
+
+1. Visit the [Perspective API](https://support.perspectiveapi.com/s/docs-get-started?language=en_US)
+2. Follow the setup instructions to get your API key
+3. The API has a free tier with generous limits for personal use
+
+### 2. Configure the Extension
+
+1. Open `Detoxer/background.js`
+2. Find the line: `const PERSPECTIVE_API_KEY = "";`
+3. Replace the empty string with your actual API key:
+   ```javascript
+   const PERSPECTIVE_API_KEY = "your-api-key-here";
+   ```
+
+### 3. Install in Chrome
+
+1. Open Chrome and go to `chrome://extensions/`
+2. Enable "Developer mode" in the top right
+3. Click "Load unpacked" and select the `Detoxer` folder
+4. Pin the extension to your toolbar for easy access
+
+## Usage
+
+1. Visit any website with text content
+2. Scroll down to load content (the extension analyzes visible text)
+3. Click the Detoxer icon in your toolbar
+4. Watch the processing indicator in the top-right corner
+5. Toxic content will be replaced with clearly marked placeholders
+
+## How It Works
+
+The extension analyzes text content on web pages using Google's Perspective API, which scores content across multiple toxicity dimensions:
+
+- **Toxicity**: General toxic behavior
+- **Insult**: Insulting or disrespectful language
+- **Identity Attack**: Targeting protected groups
+
+Content with scores above the threshold (default: 70%) gets replaced with a placeholder that shows the toxicity score and explains why it was filtered.
+
+## Configuration
+
+You can adjust the filtering sensitivity by modifying `toxicityThreshold` in `background.js`:
+
+```javascript
+const toxicityThreshold = 0.7; // 0.0 to 1.0 (higher = less filtering)
 ```
-Behold this plugin, crafted with care
-Based on Perspective API, it's rare
-A shield to guard against trolls and woe
-And take back control, don't you know?
 
-Just get a key, paste it with ease
-In background.js, it's a breeze
-Install and pin in Chrome, it's done
-Your digital world, now you've won
+## Troubleshooting
 
-Visit a website, scroll down below
-Load enough content, don't be slow
-Click the plugin icon, see it shine
-And leave those trolls far behind.
+### "API Key Required" Error
+- Make sure you've added your Perspective API key to `background.js`
+- Verify the key is valid and has quota remaining
 
-[*ChatGPT*]
-```
+### No Content Being Filtered
+- The page might not have highly toxic content
+- Try lowering the `toxicityThreshold` for more aggressive filtering
+- Check the browser console for any errors
 
-1. Get a [Perspective API](https://support.perspectiveapi.com/s/docs-get-started?language=en_US) key and paste in [corresponding place](https://github.com/QuchenFu/chrome-plugin-detoxer/blob/main/Detoxer/background.js#L3) in file [background.js](https://github.com/QuchenFu/chrome-plugin-detoxer/blob/main/Detoxer/background.js)
+### Extension Not Working
+- Ensure the extension is enabled in `chrome://extensions/`
+- Try refreshing the page and clicking the icon again
+- Check if the website blocks content scripts
 
-2. Intall the extension and pin it in chrome.
+### API Errors
+- Verify your API key is correct and active
+- Check your API quota usage on the Google Cloud Console
+- Network issues may cause temporary failures
 
-3. Visit a website and scroll down to load enough content, click the plugin icon.
+## Privacy
+
+- The extension only analyzes text content visible on the current page
+- Content is sent to Google's Perspective API for analysis
+- No browsing history or personal data is collected
+- All processing happens locally in your browser
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
 
