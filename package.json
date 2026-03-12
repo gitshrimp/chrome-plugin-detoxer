@@ -4,9 +4,13 @@
   "version": "0.1.0",
   "description": "Minimal CI checks for the Chrome Plugin Detoxer extension.",
   "scripts": {
-    "test": "node scripts/validate-extension.mjs"
+    "test": "node scripts/validate-extension.mjs",
+    "test:smoke": "node scripts/smoke-extension.mjs"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "^1.53.2"
   }
 }
